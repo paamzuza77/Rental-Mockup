@@ -1,13 +1,14 @@
-import { Users } from "lucide-react"
-import { PagePlaceholder } from "@/components/page-placeholder"
+import { TenantsPageHeader } from "@/components/tenants/tenants-page-header"
+import { TenantSummaryCards } from "@/components/tenants/tenant-summary-cards"
+import { TenantExplorer } from "@/components/tenants/tenant-explorer"
+import { tenants } from "@/lib/mock-tenants"
 
 export default function TenantsPage() {
   return (
-    <PagePlaceholder
-      icon={Users}
-      titleTh="ผู้เช่า"
-      titleEn="Tenants"
-      descriptionTh="ข้อมูลผู้เช่า เบอร์ติดต่อ เลขบัตรประชาชน วันเข้า-ออก จะแสดงที่นี่"
-    />
+    <div className="flex flex-col gap-7 md:gap-8">
+      <TenantsPageHeader />
+      <TenantSummaryCards />
+      <TenantExplorer tenants={tenants} />
+    </div>
   )
 }
