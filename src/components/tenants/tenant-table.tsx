@@ -1,5 +1,6 @@
 import {
   Eye,
+  FolderOpen,
   MessageCircle,
   MoreHorizontal,
   Pencil,
@@ -36,12 +37,14 @@ export function TenantTable({
   onViewDetails,
   onEdit,
   onRecordContact,
+  onManageDocuments,
   onPlaceholder,
 }: {
   tenants: Tenant[]
   onViewDetails: (tenant: Tenant) => void
   onEdit: (tenant: Tenant) => void
   onRecordContact: (tenant: Tenant) => void
+  onManageDocuments: (tenant: Tenant) => void
   onPlaceholder: (action: TenantPlaceholderAction) => void
 }) {
   return (
@@ -133,6 +136,10 @@ export function TenantTable({
                       <DropdownMenuItem onClick={() => onRecordContact(tenant)}>
                         <MessageCircle />
                         บันทึกการติดต่อ
+                      </DropdownMenuItem>
+                      <DropdownMenuItem onClick={() => onManageDocuments(tenant)}>
+                        <FolderOpen />
+                        จัดการเอกสารและรูปภาพ
                       </DropdownMenuItem>
 
                       <DropdownMenuSeparator />

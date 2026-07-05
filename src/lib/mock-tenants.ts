@@ -27,7 +27,7 @@ export type Tenant = {
   rent: number
   outstanding?: number
   contactChannel: string
-  lastContact: { note: string; date: string }
+  lastContact: { note: string; date: string; time: string }
   note?: string
 }
 
@@ -91,7 +91,11 @@ export const tenants: Tenant[] = [
     leaseEnd: "14 มี.ค. 2570",
     rent: 4200,
     contactChannel: "LINE",
-    lastContact: { note: "สอบถามเรื่องที่จอดรถเพิ่มเติม", date: "28 มิ.ย. 2569" },
+    lastContact: {
+      note: "สอบถามเรื่องที่จอดรถเพิ่มเติม",
+      date: "28 มิ.ย. 2569",
+      time: "10:15 น.",
+    },
   },
   {
     id: "t-a103",
@@ -106,7 +110,11 @@ export const tenants: Tenant[] = [
     rent: 3700,
     outstanding: 3700,
     contactChannel: "โทรศัพท์",
-    lastContact: { note: "โทรติดตามยอดค้างชำระ ยังไม่รับสาย", date: "4 ก.ค. 2569" },
+    lastContact: {
+      note: "โทรติดตามยอดค้างชำระ ยังไม่รับสาย",
+      date: "4 ก.ค. 2569",
+      time: "09:40 น.",
+    },
   },
   {
     id: "t-a104",
@@ -120,7 +128,11 @@ export const tenants: Tenant[] = [
     leaseEnd: "9 ม.ค. 2570",
     rent: 4000,
     contactChannel: "LINE",
-    lastContact: { note: "แจ้งซ่อมก๊อกน้ำเรียบร้อยแล้ว", date: "20 มิ.ย. 2569" },
+    lastContact: {
+      note: "แจ้งซ่อมก๊อกน้ำเรียบร้อยแล้ว",
+      date: "20 มิ.ย. 2569",
+      time: "14:05 น.",
+    },
   },
   {
     id: "t-a102-out",
@@ -134,7 +146,11 @@ export const tenants: Tenant[] = [
     leaseEnd: "30 มิ.ย. 2569",
     rent: 3200,
     contactChannel: "โทรศัพท์",
-    lastContact: { note: "ยืนยันคืนเงินประกันเรียบร้อยแล้ว", date: "30 มิ.ย. 2569" },
+    lastContact: {
+      note: "ยืนยันคืนเงินประกันเรียบร้อยแล้ว",
+      date: "30 มิ.ย. 2569",
+      time: "16:20 น.",
+    },
   },
   {
     id: "t-a105-out",
@@ -148,7 +164,11 @@ export const tenants: Tenant[] = [
     leaseEnd: "30 มิ.ย. 2569",
     rent: 3200,
     contactChannel: "LINE",
-    lastContact: { note: "แจ้งย้ายออกล่วงหน้าตามกำหนด", date: "25 มิ.ย. 2569" },
+    lastContact: {
+      note: "แจ้งย้ายออกล่วงหน้าตามกำหนด",
+      date: "25 มิ.ย. 2569",
+      time: "11:00 น.",
+    },
   },
   {
     id: "t-a201",
@@ -162,7 +182,11 @@ export const tenants: Tenant[] = [
     leaseEnd: "4 พ.ย. 2569",
     rent: 3800,
     contactChannel: "โทรศัพท์",
-    lastContact: { note: "สอบถามเรื่องบิลค่าไฟเดือนนี้", date: "2 ก.ค. 2569" },
+    lastContact: {
+      note: "สอบถามเรื่องบิลค่าไฟเดือนนี้",
+      date: "2 ก.ค. 2569",
+      time: "13:30 น.",
+    },
   },
   {
     id: "t-a202",
@@ -176,7 +200,11 @@ export const tenants: Tenant[] = [
     leaseEnd: "9 ก.ค. 2570",
     rent: 3900,
     contactChannel: "LINE",
-    lastContact: { note: "ยืนยันวันย้ายเข้าและนัดรับกุญแจ", date: "1 ก.ค. 2569" },
+    lastContact: {
+      note: "ยืนยันวันย้ายเข้าและนัดรับกุญแจ",
+      date: "1 ก.ค. 2569",
+      time: "15:45 น.",
+    },
   },
   {
     id: "t-b203",
@@ -191,7 +219,11 @@ export const tenants: Tenant[] = [
     rent: 4500,
     outstanding: 4500,
     contactChannel: "LINE",
-    lastContact: { note: "ส่งข้อความแจ้งเตือนบิลค้างชำระ", date: "3 ก.ค. 2569" },
+    lastContact: {
+      note: "ส่งข้อความแจ้งเตือนบิลค้างชำระ",
+      date: "3 ก.ค. 2569",
+      time: "08:50 น.",
+    },
   },
   {
     id: "t-b204",
@@ -205,7 +237,11 @@ export const tenants: Tenant[] = [
     leaseEnd: "11 ก.ย. 2569",
     rent: 4100,
     contactChannel: "โทรศัพท์",
-    lastContact: { note: "แจ้งรับบิลเดือนนี้เรียบร้อย", date: "1 ก.ค. 2569" },
+    lastContact: {
+      note: "แจ้งรับบิลเดือนนี้เรียบร้อย",
+      date: "1 ก.ค. 2569",
+      time: "12:10 น.",
+    },
   },
   {
     id: "t-b301",
@@ -219,7 +255,11 @@ export const tenants: Tenant[] = [
     leaseEnd: "31 ก.ค. 2569",
     rent: 4300,
     contactChannel: "ในสถานที่",
-    lastContact: { note: "สอบถามเรื่องต่อสัญญาเช่ารอบใหม่", date: "30 มิ.ย. 2569" },
+    lastContact: {
+      note: "สอบถามเรื่องต่อสัญญาเช่ารอบใหม่",
+      date: "30 มิ.ย. 2569",
+      time: "17:00 น.",
+    },
   },
   {
     id: "t-b302",
@@ -233,7 +273,11 @@ export const tenants: Tenant[] = [
     leaseEnd: "21 เม.ย. 2570",
     rent: 3950,
     contactChannel: "LINE",
-    lastContact: { note: "สอบถามเรื่องที่จอดรถจักรยานยนต์", date: "18 มิ.ย. 2569" },
+    lastContact: {
+      note: "สอบถามเรื่องที่จอดรถจักรยานยนต์",
+      date: "18 มิ.ย. 2569",
+      time: "10:30 น.",
+    },
   },
   {
     id: "t-c303",
@@ -247,7 +291,11 @@ export const tenants: Tenant[] = [
     leaseEnd: "15 ส.ค. 2569",
     rent: 4200,
     contactChannel: "โทรศัพท์",
-    lastContact: { note: "สอบถามเรื่องต่อสัญญาเช่า ยังไม่ตัดสินใจ", date: "29 มิ.ย. 2569" },
+    lastContact: {
+      note: "สอบถามเรื่องต่อสัญญาเช่า ยังไม่ตัดสินใจ",
+      date: "29 มิ.ย. 2569",
+      time: "14:50 น.",
+    },
   },
   {
     id: "t-c304-out",
@@ -261,7 +309,11 @@ export const tenants: Tenant[] = [
     leaseEnd: "28 มิ.ย. 2569",
     rent: 3300,
     contactChannel: "โทรศัพท์",
-    lastContact: { note: "ยืนยันคืนเงินประกันเรียบร้อยแล้ว", date: "28 มิ.ย. 2569" },
+    lastContact: {
+      note: "ยืนยันคืนเงินประกันเรียบร้อยแล้ว",
+      date: "28 มิ.ย. 2569",
+      time: "09:15 น.",
+    },
   },
   {
     id: "t-c305",
@@ -275,7 +327,11 @@ export const tenants: Tenant[] = [
     leaseEnd: "11 ก.ค. 2570",
     rent: 4000,
     contactChannel: "LINE",
-    lastContact: { note: "ยืนยันวันย้ายเข้าและนัดรับกุญแจ", date: "2 ก.ค. 2569" },
+    lastContact: {
+      note: "ยืนยันวันย้ายเข้าและนัดรับกุญแจ",
+      date: "2 ก.ค. 2569",
+      time: "11:20 น.",
+    },
   },
   {
     id: "t-c401",
@@ -289,7 +345,11 @@ export const tenants: Tenant[] = [
     leaseEnd: "2 ก.พ. 2570",
     rent: 4400,
     contactChannel: "โทรศัพท์",
-    lastContact: { note: "แจ้งรับบิลเดือนนี้เรียบร้อย", date: "1 ก.ค. 2569" },
+    lastContact: {
+      note: "แจ้งรับบิลเดือนนี้เรียบร้อย",
+      date: "1 ก.ค. 2569",
+      time: "13:00 น.",
+    },
   },
   {
     id: "t-c402",
@@ -303,7 +363,11 @@ export const tenants: Tenant[] = [
     leaseEnd: "18 ต.ค. 2570",
     rent: 4150,
     contactChannel: "LINE",
-    lastContact: { note: "สอบถามเรื่องเฟอร์นิเจอร์เพิ่มเติม", date: "22 มิ.ย. 2569" },
+    lastContact: {
+      note: "สอบถามเรื่องเฟอร์นิเจอร์เพิ่มเติม",
+      date: "22 มิ.ย. 2569",
+      time: "15:10 น.",
+    },
   },
   {
     id: "t-c403",
@@ -317,7 +381,11 @@ export const tenants: Tenant[] = [
     leaseEnd: "20 ก.ค. 2569",
     rent: 4250,
     contactChannel: "ในสถานที่",
-    lastContact: { note: "แจ้งเตือนสัญญาใกล้หมดอายุ รอการตอบกลับ", date: "1 ก.ค. 2569" },
+    lastContact: {
+      note: "แจ้งเตือนสัญญาใกล้หมดอายุ รอการตอบกลับ",
+      date: "1 ก.ค. 2569",
+      time: "09:00 น.",
+    },
   },
   {
     id: "t-c404",
@@ -331,7 +399,11 @@ export const tenants: Tenant[] = [
     leaseEnd: "13 ม.ค. 2570",
     rent: 4050,
     contactChannel: "โทรศัพท์",
-    lastContact: { note: "แจ้งรับบิลเดือนนี้เรียบร้อย", date: "4 ก.ค. 2569" },
+    lastContact: {
+      note: "แจ้งรับบิลเดือนนี้เรียบร้อย",
+      date: "4 ก.ค. 2569",
+      time: "10:45 น.",
+    },
   },
   {
     id: "t-c405",
@@ -345,7 +417,11 @@ export const tenants: Tenant[] = [
     leaseEnd: "8 ส.ค. 2570",
     rent: 4300,
     contactChannel: "LINE",
-    lastContact: { note: "สอบถามเรื่องทั่วไป ไม่มีปัญหา", date: "1 ก.ค. 2569" },
+    lastContact: {
+      note: "สอบถามเรื่องทั่วไป ไม่มีปัญหา",
+      date: "1 ก.ค. 2569",
+      time: "16:00 น.",
+    },
   },
 ]
 

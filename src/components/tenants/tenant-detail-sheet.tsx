@@ -1,9 +1,11 @@
 "use client"
 
+import { useMemo } from "react"
 import {
   CalendarDays,
   ChevronDown,
   DoorOpen,
+  FolderOpen,
   IdCard,
   MessageCircle,
   Pencil,
@@ -31,6 +33,11 @@ import {
 import { TenantStatusBadge } from "@/components/tenants/tenant-status-badge"
 import { tenantStatusConfig, type Tenant } from "@/lib/mock-tenants"
 import type { TenantPlaceholderAction } from "@/lib/tenant-actions"
+import {
+  getMockTenantDocuments,
+  tenantDocumentCategories,
+  tenantDocumentCategoryConfig,
+} from "@/lib/mock-tenant-documents"
 
 function formatCurrency(amount: number) {
   return `฿${amount.toLocaleString("th-TH")}`
@@ -42,6 +49,7 @@ export function TenantDetailSheet({
   onOpenChange,
   onEdit,
   onRecordContact,
+  onManageDocuments,
   onPlaceholder,
 }: {
   tenant: Tenant | null
@@ -49,8 +57,24 @@ export function TenantDetailSheet({
   onOpenChange: (open: boolean) => void
   onEdit: (tenant: Tenant) => void
   onRecordContact: (tenant: Tenant) => void
+  onManageDocuments: (tenant: Tenant) => void
   onPlaceholder: (action: TenantPlaceholderAction) => void
 }) {
+  const documents = useMemo(
+    () => (tenant ? getMockTenantDocuments(tenant) : []),
+    [tenant]
+  )
+  const categorySummaries = useMemo(
+    () =>
+      tenantDocumentCategories
+        .map((category) => ({
+          category,
+          count: documents.filter((doc) => doc.category === category).length,
+        }))
+        .filter((summary) => summary.count > 0),
+    [documents]
+  )
+
   if (!tenant) return null
 
   const config = tenantStatusConfig[tenant.status]
@@ -130,9 +154,39 @@ export function TenantDetailSheet({
               <div className="flex flex-1 flex-col">
                 <span className="text-sm">{tenant.lastContact.note}</span>
                 <span className="text-[12px] text-muted-foreground">
-                  ผ่าน{tenant.contactChannel} • {tenant.lastContact.date}
+                  ผ่าน{tenant.contactChannel} • {tenant.lastContact.date} • {tenant.lastContact.time}
                 </span>
               </div>
+            </div>
+          </div>
+
+          <div className="flex flex-col gap-2">
+            <span className="text-[13px] font-medium text-muted-foreground">เอกสารและรูปภาพผู้เช่า</span>
+            <div className="flex flex-col gap-2.5 rounded-xl border border-border/60 px-3.5 py-3">
+              <div className="flex items-center justify-between gap-2">
+                <span className="text-sm">แนบแล้ว {documents.length} ไฟล์</span>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="gap-1.5 rounded-lg"
+                  onClick={() => onManageDocuments(tenant)}
+                >
+                  <FolderOpen className="size-3.5" />
+                  จัดการเอกสารและรูปภาพ
+                </Button>
+              </div>
+              {categorySummaries.length > 0 ? (
+                <div className="flex flex-wrap gap-1.5">
+                  {categorySummaries.map(({ category, count }) => (
+                    <span
+                      key={category}
+                      className="rounded-lg bg-muted/50 px-2 py-1 text-[11px] text-muted-foreground"
+                    >
+                      {tenantDocumentCategoryConfig[category].label} ({count})
+                    </span>
+                  ))}
+                </div>
+              ) : null}
             </div>
           </div>
         </div>
@@ -160,6 +214,10 @@ export function TenantDetailSheet({
               <ChevronDown className="size-3.5 text-muted-foreground" />
             </DropdownMenuTrigger>
             <DropdownMenuContent align="start" className="w-64">
+              <DropdownMenuItem onClick={() => onManageDocuments(tenant)}>
+                <FolderOpen />
+                จัดการเอกสารและรูปภาพ
+              </DropdownMenuItem>
               <DropdownMenuItem onClick={() => onPlaceholder("view-lease")}>
                 <Receipt />
                 ดูสัญญาเช่า
